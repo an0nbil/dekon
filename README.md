@@ -11,7 +11,7 @@ Dekon is a user-friendly tool for generating and categorizing Google Dorks, perf
 - **Responsive UI:** A sleek, mobile-friendly design.
 
 ## Usage 📋
-1. [Visit Dekon here!](https://an0nbil.github.io/dekon/)
+1. <a href="https://an0nbil.github.io/dekon/" target="_blank">Visit Dekon here!</a>
 2. Enter a domain (e.g., `example.com`) in the input field.
 3. Click on a dork to open it in a new tab or use the **Open All Dorks** button to open them all.
 
@@ -25,5 +25,5 @@ Contributions are welcome! Feel free to open issues or submit pull requests to i
 ## License 📝
 This project is open-source and licensed under the MIT License.
 
-# Note:
+### Note:
 If you face any issue in the website feel free to open an issue, This website is still in development phase and new dorks will be added every 3 days.
