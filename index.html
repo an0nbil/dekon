@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dekon</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1d1f21, #282c34);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: #4ade80;
+      margin: 20px 0;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      border: 2px solid #4ade80;
+      border-radius: 8px;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    input[type="text"]::placeholder {
+      color: #666666;
+    }
+
+    #openAllDorks {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    #openAllDorks:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #9333ea, #3b82f6);
+    }
+
+    #dorksList {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+
+    .dork-card {
+      background: #333333;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .dork-card:hover {
+      transform: scale(1.05);
+      background: #4b5563;
+    }
+
+    .dork-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #4ade80;
+    }
+
+    .dork-card a {
+      display: block;
+      margin: 8px 0;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .dork-card a:hover {
+      color: #93c5fd;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dekon</h1>
+  <input type="text" id="domainInput" placeholder="Enter domain (e.g., example.com)" oninput="updateDorks()">
+  <button id="openAllDorks" onclick="openAllDorks()">Open All Dorks</button>
+
+  <div id="dorksList">
+    <div class="dork-card">
+      <h3>Directory Listings</h3>
+      <a href="#" target="_blank">site:example.com intitle:"index of"</a>
+      <a href="#" target="_blank">site:example.com inurl:backup "Parent Directory"</a>
+      <a href="#" target="_blank">site:example.com "directory listing"</a>
+    </div>
+    <div class="dork-card">
+      <h3>Admin Panels</h3>
+      <a href="#" target="_blank">site:example.com inurl:admin</a>
+      <a href="#" target="_blank">site:example.com inurl:/wp-admin/admin-ajax.php</a>
+      <a href="#" target="_blank">site:example.com inurl:login</a>
+    </div>
+    <div class="dork-card">
+      <h3>SQL Errors</h3>
+      <a href="#" target="_blank">site:example.com "sql syntax error"</a>
+      <a href="#" target="_blank">site:example.com intext:"you have an error in your SQL syntax"</a>
+      <a href="#" target="_blank">site:example.com inurl:sql</a>
+    </div>
+    <div class="dork-card">
+      <h3>Backups</h3>
+      <a href="#" target="_blank">site:example.com ext:sql</a>
+      <a href="#" target="_blank">site:example.com ext:bak</a>
+      <a href="#" target="_blank">site:example.com ext:zip</a>
+    </div>
+    <div class="dork-card">
+      <h3>Logs</h3>
+      <a href="#" target="_blank">site:example.com ext:log</a>
+      <a href="#" target="_blank">site:example.com inurl:log</a>
+      <a href="#" target="_blank">site:example.com "error log"</a>
+    </div>
+    <div class="dork-card">
+      <h3>Config Files</h3>
+      <a href="#" target="_blank">site:example.com ext:env</a>
+      <a href="#" target="_blank">site:example.com ext:config</a>
+      <a href="#" target="_blank">site:example.com inurl:config</a>
+    </div>
+    <div class="dork-card">
+      <h3>Exposed API Keys</h3>
+      <a href="#" target="_blank">site:example.com "api_key"</a>
+      <a href="#" target="_blank">site:example.com "apikey"</a>
+      <a href="#" target="_blank">site:example.com "access_key"</a>
+    </div>
+    <div class="dork-card">
+      <h3>Custom Error Messages</h3>
+      <a href="#" target="_blank">site:example.com "fatal error"</a>
+      <a href="#" target="_blank">site:example.com "uncaught exception"</a>
+      <a href="#" target="_blank">site:example.com "warning"</a>
+    </div>
+    <div class="dork-card">
+      <h3>Development Files</h3>
+      <a href="#" target="_blank">site:example.com ext:php</a>
+      <a href="#" target="_blank">site:example.com ext:js</a>
+      <a href="#" target="_blank">site:example.com ext:json</a>
+    </div>
+    <div class="dork-card">
+      <h3>Login & Portals</h3>
+      <a href="#" target="_blank">site:example.com inurl:login | inurl:logon | inurl:sign-in | inurl:signin | inurl:portal</a>
+      <a href="#" target="_blank">site:example.com intitle:"cs141 webmanager"</a>
+      <a href="#" target="_blank">site:example.com inurl:"/phpinfo.php" | inurl:".htaccess"</a>
+    </div>
+    
+    <div class="dork-card">
+      <h3>PHP Info & Emails</h3>
+      <a href="#" target="_blank">site:example.com ext:php intitle:phpinfo "published by the PHP Group"</a>
+      <a href="#" target="_blank">site:example.com filetype:txt @gmail.com OR @yahoo.com OR @hotmail.com OR @aol.com</a>
+      <a href="#" target="_blank">site:example.com “index of” inurl:.git</a>
+    </div>
+    
+    <div class="dork-card">
+      <h3>Ports & Sensitive Data</h3>
+      <a href="#" target="_blank">site:example.com intitle:"Lost Password Reset" | inurl:/secure/pwreset.php | inurl:/portal/index.php</a>
+      <a href="#" target="_blank">site:example.com filetype:url +inurl:"ftp://" +inurl:";@"</a>
+      <a href="#" target="_blank">site:example.com filetype:reg reg +intext:"defaultusername" +intext:"defaultpassword"</a>
+    </div>    
+  </div>
+
+  <div class="footer">
+    <p>Made by <a href="https://linktr.ee/an0nbil">an0nbil</a>. Credits: <a href="https://www.exploit-db.com/">ExploitDB</a>.</p>
+  </div>
+
+  <script>
+    function updateDorks() {
+      const domain = document.getElementById("domainInput").value.trim() || "example.com";
+      const links = document.querySelectorAll(".dork-card a");
+
+      links.forEach(link => {
+        const originalDork = link.getAttribute("data-original-dork") || link.textContent;
+        const updatedDork = originalDork.replace(/example\.com/g, domain);
+        link.textContent = updatedDork;
+        link.href = `https://www.google.com/search?q=${encodeURIComponent(updatedDork)}`;
+        link.setAttribute("data-original-dork", originalDork);
+      });
+    }
+
+    function openAllDorks() {
+      const links = document.querySelectorAll(".dork-card a");
+      links.forEach((link, index) => {
+        const newWindow = window.open(link.href, `_blank_${index}`);
+        if (newWindow) newWindow.opener = null;
+      });
+    }
+  </script>
+</body>
+</html>
