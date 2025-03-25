@@ -202,6 +202,15 @@
     </div>    
   </div>
 
+  <div id="popup-container"></div>
+<script>
+    fetch('popup.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('popup-container').innerHTML = data;
+        });
+</script>
+
   <div class="footer">
     <p>Made by <a href="https://linktr.ee/an0nbil">an0nbil</a>. Credits: <a href="https://www.exploit-db.com/">ExploitDB</a>.</p>
   </div>
