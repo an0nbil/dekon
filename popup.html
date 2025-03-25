@@ -4,3 +4,52 @@
     <p>We are working to release the next version of Dekon, with many new and updated features and new UI.</p>
     <p><a href="https://www.linkedin.com/in/bilal-sec/" target="_blank">Stay Tuned!</a></p>
 </div>
+<style>
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #32CD32, #228B22);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border: 3px solid #1c496f;
+        text-align: center;
+        color: white;
+        width: 300px;
+    }
+    .popup h2 {
+        margin: 0;
+        font-size: 20px;
+    }
+    .popup p {
+        font-size: 14px;
+        margin: 10px 0;
+    }
+    .popup a {
+        font-size: 12px;
+        color: yellow;
+        text-decoration: none;
+    }
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: white;
+        border: 2px solid #1c496f;
+        color: #1c496f;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 22px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
+<script>
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
