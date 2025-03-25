@@ -118,6 +118,87 @@
     .footer a:hover {
       text-decoration: underline;
     }
+
+    /* Popup Styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .popup-content {
+      position: relative;
+      background: linear-gradient(135deg, #34d399, #6ee7b7);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 3px solid #1c496f;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 30px;
+      height: 30px;
+      background: white;
+      border-radius: 50%;
+      border: 2px solid #1c496f;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .close-btn::before,
+    .close-btn::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 2px;
+      background: #1c496f;
+    }
+
+    .close-btn::before {
+      transform: rotate(45deg);
+    }
+
+    .close-btn::after {
+      transform: rotate(-45deg);
+    }
+
+    .popup-heading {
+      color: #1c496f;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    .popup-text {
+      color: #1c496f;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .stay-tuned {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .stay-tuned a {
+      color: #1c496f;
+      text-decoration: underline;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -186,30 +267,31 @@
       <a href="#" target="_blank">site:example.com intitle:"cs141 webmanager"</a>
       <a href="#" target="_blank">site:example.com inurl:"/phpinfo.php" | inurl:".htaccess"</a>
     </div>
-    
     <div class="dork-card">
       <h3>PHP Info & Emails</h3>
       <a href="#" target="_blank">site:example.com ext:php intitle:phpinfo "published by the PHP Group"</a>
       <a href="#" target="_blank">site:example.com filetype:txt @gmail.com OR @yahoo.com OR @hotmail.com OR @aol.com</a>
       <a href="#" target="_blank">site:example.com “index of” inurl:.git</a>
     </div>
-    
     <div class="dork-card">
       <h3>Ports & Sensitive Data</h3>
       <a href="#" target="_blank">site:example.com intitle:"Lost Password Reset" | inurl:/secure/pwreset.php | inurl:/portal/index.php</a>
       <a href="#" target="_blank">site:example.com filetype:url +inurl:"ftp://" +inurl:";@"</a>
       <a href="#" target="_blank">site:example.com filetype:reg reg +intext:"defaultusername" +intext:"defaultpassword"</a>
-    </div>    
+    </div>
   </div>
 
-  <div id="popup-container"></div>
-<script>
-    fetch('popup.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('popup-container').innerHTML = data;
-        });
-</script>
+  <!-- Popup -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-content">
+      <div class="close-btn" onclick="closePopup()"></div>
+      <h2 class="popup-heading">Update on the Way!</h2>
+      <p class="popup-text">We are working to release the next version of Dekon, with many new and updated features and new UI</p>
+      <p class="stay-tuned">
+        <a href="https://www.linkedin.com/in/bilal-sec/" target="_blank" rel="noopener noreferrer">Stay Tuned!</a>
+      </p>
+    </div>
+  </div>
 
   <div class="footer">
     <p>Made by <a href="https://linktr.ee/an0nbil">an0nbil</a>. Credits: <a href="https://www.exploit-db.com/">ExploitDB</a>.</p>
@@ -235,6 +317,15 @@
         const newWindow = window.open(link.href, `_blank_${index}`);
         if (newWindow) newWindow.opener = null;
       });
+    }
+
+    // Popup Control
+    window.onload = function() {
+      document.getElementById('popup').style.display = 'flex';
+    };
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
     }
   </script>
 </body>
